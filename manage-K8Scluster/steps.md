@@ -1,7 +1,3 @@
-Here’s a comprehensive, structured note to help understand the lifecycle of managing Kubernetes (K8s) clusters, the differences between K8s and its variants, and step-by-step instructions for creating and managing a cluster using KOPS on EC2. This also includes real-world examples and practical explanations.
-
----
-
 ### **Kubernetes (K8s) Production System Management**
 
 #### **Purpose**
