@@ -1,8 +1,4 @@
-### Project Steps to Deploy and Manage a Kubernetes Application (with Expected Output)
-
-This guide will walk through creating a simple Kubernetes Deployment, managing Pods, and ensuring that everything works as expected.
-
----
+### Project Steps to Deploy and Manage a Kubernetes Application 
 
 ### **Step 1: Create a Deployment YAML File**
 1. **Create a file named `deployment.yaml`:**
