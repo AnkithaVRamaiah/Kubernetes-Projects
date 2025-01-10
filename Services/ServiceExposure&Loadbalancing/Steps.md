@@ -46,7 +46,7 @@ In this section, we will explore how to expose your application using three diff
    
    - Apply the service:
      ```bash
-     kubectl apply -f service-clusterip.yaml
+     kubectl apply -f service.yaml
      ```
    - **Access**: This service will be accessible only within the cluster. You cannot access it from outside the cluster.
 
@@ -55,7 +55,7 @@ In this section, we will explore how to expose your application using three diff
    
    - Apply the service:
      ```bash
-     kubectl apply -f service-nodeport.yaml
+     kubectl apply -f service.yaml
      ```
    - **Access**: You can access the service using the node's IP and the specified node port, like `http://<node-ip>:30007`. This is typically used for development or testing environments.
 
@@ -64,11 +64,11 @@ In this section, we will explore how to expose your application using three diff
    
    - Apply the service:
      ```bash
-     kubectl apply -f service-loadbalancer.yaml
+     kubectl apply -f service.yaml
      ```
    - **Access**: You can access the application using the external IP address assigned to the service:
      ```bash
-     kubectl get svc myapp-service-loadbalancer
+     kubectl get svc myapp-service
      ```
    - The external IP will be listed once it is provisioned, and you can use it to access your app from outside the cluster.
 
