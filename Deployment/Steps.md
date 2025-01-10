@@ -64,33 +64,34 @@ Here are the steps you followed for practicing a deployment project using Kubern
    deployment.apps/myapp   2/2     2            2           99s       
    ```
 
-### 4. **Check Pods Status**
+### 4. **Check Pods Status and IP Address**
    Command:
-   ```
-   kubectl get pods
-   ```
-   to see details like ipaddress
    ```
    kubectl get pods -o wide
    ```
-   - **Explanation**: This command shows the pods created as part of the deployment.
-   - **Expected Output**: You will see the pods for `myapp`, and their status will show as "Running."
+   - **Explanation**: The `-o wide` option provides additional information, including the IP address of each pod, which can be useful for debugging or accessing the pods directly.
+   - **Expected Output**: The output will show the pod names, their status, restart counts, age, and the IP addresses assigned to them.
    ```
-   NAME                    READY   STATUS    RESTARTS   AGE
-   myapp-5d6b777b8-4qj2d   1/1     Running   0          3m45s
-   myapp-5d6b777b8-h9gc7   1/1     Running   0          3m44s
+   NAME                    READY   STATUS    RESTARTS   AGE    IP            NODE
+   myapp-5d6b777b8-4qj2d   1/1     Running   0          3m45s  10.244.1.4    minikube
+   myapp-5d6b777b8-h9gc7   1/1     Running   0          3m44s  10.244.1.5    minikube
    ```
 
-### **Access Minikube's VM (SSH)**:
-   
-     ```bash
-     minikube ssh
-     ```
-     
-     ```bash
-     curl 10.244.0.4
-     ```
-   - **Expected Output**:
+### 5. **Access Minikube's VM (SSH)**
+   Command:
+   ```
+   minikube ssh
+   ```
+   - **Explanation**: This command opens an SSH session to the Minikube VM, allowing you to access the environment where Kubernetes is running.
+
+### 6. **Access the Pod via Curl**
+   Command:
+   ```
+   curl <ip-of-pod>
+   ```
+   - **Explanation**: This command sends an HTTP request to the pod's IP address to check if the pod's application is accessible. Replace `<ip-of-pod>` with the actual IP address from the `kubectl get pods -o wide` output.
+
+   - **Expected Output**: You should receive the HTML content served by the application running in the pod. For example, if the pod is running Nginx, the response might look like this:
      ```html
      <!DOCTYPE html>
      <html>
@@ -104,7 +105,7 @@ Here are the steps you followed for practicing a deployment project using Kubern
    ```bash
    logout
    ```
-### 5. **Delete a Pod Manually**
+### 7. **Delete a Pod Manually**
    Command:
    ```
    kubectl delete pod myapp-5d6b777b8-4qj2d
@@ -115,7 +116,7 @@ Here are the steps you followed for practicing a deployment project using Kubern
    pod "myapp-5d6b777b8-4qj2d" deleted
    ```
 
-### 6. **Watch the Pod Recreation**
+### 8. **Watch the Pod Recreation**
    Command:
    ```
    kubectl get pods -w
@@ -130,7 +131,7 @@ Here are the steps you followed for practicing a deployment project using Kubern
    myapp-5d6b777b8-jw96n   1/1     Running    0          2s
    ```
 
-### 7. **Delete the Deployment**
+### 9. **Delete the Deployment**
    Command:
    ```
    kubectl delete deploy myapp
@@ -141,7 +142,7 @@ Here are the steps you followed for practicing a deployment project using Kubern
    deployment.apps "myapp" deleted
    ```
 
-### 8. **Debugging Kubernetes Resources**
+### 10. **Debugging Kubernetes Resources**
 1. **Describe the Pod for more details**:
    Use this command to get detailed information about a specific Pod:
    ```bash
