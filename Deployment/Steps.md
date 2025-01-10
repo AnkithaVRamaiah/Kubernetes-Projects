@@ -77,21 +77,37 @@ Here are the steps you followed for practicing a deployment project using Kubern
    myapp-5d6b777b8-h9gc7   1/1     Running   0          3m44s  10.244.1.5    minikube
    ```
 
-### 5. **Access Minikube's VM (SSH)**
+### 5. **Port Forward to Access Pod Locally**
+   Command:
+   ```
+   kubectl port-forward pod/myapp-5d6b777b8-h9gc7 80:80
+   ```
+   - **Explanation**: This command forwards port 80 on your local machine to port 80 on the pod. It allows you to access the application running inside the pod via `http://localhost:80`.
+   - **Expected Output**:
+     ```
+     Forwarding from 127.0.0.1:80 -> 80
+     Forwarding from [::1]:80 -> 80
+     Handling connection for 80
+     Handling connection for 80
+     ```
+
+# OR
+
+### **Access Minikube's VM (SSH)**
    Command:
    ```
    minikube ssh
    ```
    - **Explanation**: This command opens an SSH session to the Minikube VM, allowing you to access the environment where Kubernetes is running.
 
-### 6. **Access the Pod via Curl**
+### **Access the Pod via Curl**
    Command:
    ```
    curl <ip-of-pod>
    ```
    - **Explanation**: This command sends an HTTP request to the pod's IP address to check if the pod's application is accessible. Replace `<ip-of-pod>` with the actual IP address from the `kubectl get pods -o wide` output.
-
-   - **Expected Output**: You should receive the HTML content served by the application running in the pod. For example, if the pod is running Nginx, the response might look like this:
+   
+   - **Expected Output**: You should receive the HTML content served by the application running in the pod. For example, if the pod is running Nginx, the response might look like:
      ```html
      <!DOCTYPE html>
      <html>
@@ -101,10 +117,15 @@ Here are the steps you followed for practicing a deployment project using Kubern
      </html>
      ```
 
- **Logout from Minikube's VM**:
-   ```bash
+### **Logout from Minikube's VM**
+   Command:
+   ```
    logout
    ```
+   - **Explanation**: This command logs you out from the SSH session in the Minikube VM.
+
+---
+
 ### 7. **Delete a Pod Manually**
    Command:
    ```
