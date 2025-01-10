@@ -69,6 +69,10 @@ Here are the steps you followed for practicing a deployment project using Kubern
    ```
    kubectl get pods
    ```
+   to see details like ipaddress
+   ```
+   kubectl get pods -o wide
+   ```
    - **Explanation**: This command shows the pods created as part of the deployment.
    - **Expected Output**: You will see the pods for `myapp`, and their status will show as "Running."
    ```
@@ -77,6 +81,28 @@ Here are the steps you followed for practicing a deployment project using Kubern
    myapp-5d6b777b8-h9gc7   1/1     Running   0          3m44s
    ```
 
+### **Access Minikube's VM (SSH)**:
+   
+     ```bash
+     minikube ssh
+     ```
+     ```bash
+     curl 10.244.0.4
+     ```
+   - **Expected Output**:
+     ```html
+     <!DOCTYPE html>
+     <html>
+     <head>
+     <title>Welcome to nginx!</title>
+     ...
+     </html>
+     ```
+
+ **Logout from Minikube's VM**:
+   ```bash
+   logout
+   ```
 ### 5. **Delete a Pod Manually**
    Command:
    ```
