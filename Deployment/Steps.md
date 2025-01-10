@@ -86,6 +86,7 @@ Here are the steps you followed for practicing a deployment project using Kubern
      ```bash
      minikube ssh
      ```
+     
      ```bash
      curl 10.244.0.4
      ```
